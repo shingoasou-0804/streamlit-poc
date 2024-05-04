@@ -1,0 +1,14 @@
+services:
+  streamlit:
+    container_name: streamlit
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8502:8502
+    volumes:
+      - .:/llm
+    command: streamlit run ./src/app/main.py --server.port 8502
+    env_file:
+      - .env
